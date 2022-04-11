@@ -10,7 +10,7 @@ jobs:
         env:
           POSTGRES_NAME: postgres
           POSTGRES_USER: postgres
-          OSTGRES_PASSWORD: 0109
+          POSTGRES_PASSWORD: 3112
         ports:
           - 5432:5432
 
