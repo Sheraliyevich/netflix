@@ -8,8 +8,6 @@ router = DefaultRouter()
 router.register('actors', ActorViewSet),
 router.register('movies', MovieViewSet),
 
-error = 42/0
-
 urlpatterns = [
    path('', include(router.urls)),
    path('movies/<int:id>/actors/', MovieActorAPIView.as_view(), name="movie-actors"),
