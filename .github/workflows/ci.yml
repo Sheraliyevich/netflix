@@ -6,7 +6,7 @@ jobs:
   run-tests:
     services:
       postgres:
-        image: postgres
+        image: postgres:latest
         env:
           POSTGRES_NAME: postgres
           POSTGRES_USER: postgres
