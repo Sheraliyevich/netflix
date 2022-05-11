@@ -96,18 +96,17 @@ DATABASES = {
     }
 }
 
-if os.environ.get('GITHUB_WORKFLOW'):
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'netflix-movie',
-            'USER': 'postgres',
-            'PASSWORD': '0109',
-            'HOST': '127.0.0.1',
-            'PORT': '5432',
-
-        }
-    }
+# if os.environ.get('GITHUB_WORKFLOW'):
+#    DATABASES = {
+#        'default': {
+#            'ENGINE': 'django.db.backends.postgresql',
+#            'NAME': 'netflix-movie',
+#            'USER': 'postgres',
+#            'PASSWORD': '0109',
+#            'HOST': '127.0.0.1',
+#            'PORT': '5432',
+#        }
+#   }
 
 
 # Password validation
