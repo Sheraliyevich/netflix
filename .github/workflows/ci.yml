@@ -1,4 +1,4 @@
-name: Music API CI
+name: Netflix API CI
 
 on: [push]
 
