@@ -4,6 +4,17 @@ on: [push]
 
 jobs:
   run-tests:
+    services:
+      postgres:
+        image: postgres:latest
+        env:
+          POSTGRES_NAME: postgres
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: 0109
+        ports:
+          - 5432:5432
+
+
     runs-on: ubuntu-latest
     env:
       DJANGO_SETTINGS_MODULE: NETFLIX_1.settings
