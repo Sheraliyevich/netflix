@@ -1,0 +1,45 @@
+name: Music API CI
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  run-tests:
+    services:
+      postgres:
+        image: postgres
+      env:
+        POSTGRES_NAME: postgres
+        POSTGRES_USER: postgres
+        POSTGRES_PASSWORD: 0109
+      ports:
+        - 5432:5432
+
+
+    runs-on: ubuntu-latest
+    env:
+      DJANGO_SETTINGS_MODULE: NETFLIX_1.settings
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v3
+        with:
+          python-version: 3.8
+      - name: Install Requirements
+        run: pip install -r requirements.txt
+      - name: Run Tests
+        run: pytest
+  deploy:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: executing remote ssh commands using password
+        uses: appleboy/ssh-action@master
+        with:
+          host: 164.92.192.200
+          username: root
+          key: ${{ secrets.KEY }}
+          script: |
+            cd netflixapi
+            git pull
+            systemctl restart gunicorn.service
